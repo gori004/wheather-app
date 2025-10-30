@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Polished Weather Dashboard</title>
+
+  <!-- Fonts & Chart.js -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="bg-anim" class="bg-anim"></div>
+
+  <div class="app" aria-live="polite">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">GW</div>
+        <div class="titles">
+          <h1>Gori Weather</h1>
+          <p class="sub">Real-time • Forecast • Smart UI</p>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <button id="locBtn" title="Use device location" class="btn ghost">📍</button>
+        <button id="themeBtn" title="Toggle theme" class="btn ghost">🌗</button>
+      </div>
+    </header>
+
+    <main class="grid">
+      <!-- Left column -->
+      <section class="card glass left-col">
+        <form id="searchForm" class="search-row" aria-label="Search weather">
+          <input id="cityInput" autocomplete="off" placeholder="City name (e.g., New York, Mumbai)" aria-label="City name">
+          <button id="searchBtn" class="btn primary" aria-label="Search">Search</button>
+        </form>
+
+        <div id="currentCard" class="current-card" role="region" aria-label="Current weather">
+          <div class="placeholder">Search a city or use location</div>
+        </div>
+
+        <div class="forecast-header">
+          <h3>5-Day Forecast</h3>
+          <div class="hint muted tiny">Tip: Tap a day to view details</div>
+        </div>
+        <div id="forecastContainer" class="forecast-grid" role="list"></div>
+      </section>
+
+      <!-- Right column -->
+      <aside class="card glass right-col" aria-label="Controls and charts">
+        <div class="panel favorites-panel">
+          <div class="panel-head">
+            <h3>Favorites & Recent</h3>
+            <div class="muted tiny">Tap to load</div>
+          </div>
+
+          <ul id="favList" class="fav-list" aria-label="Favorite cities"></ul>
+          <ul id="recentList" class="recent-list" aria-label="Recent searches"></ul>
+
+          <div class="recent-actions">
+            <button id="clearRecent" class="btn ghost">Clear</button>
+            <button id="exportRecent" class="btn ghost">Export</button>
+          </div>
+        </div>
+
+        <div class="panel chart-panel">
+          <h3>Temperature Trend</h3>
+          <div class="chart-wrap">
+            <canvas id="tempChart"></canvas>
+          </div>
+        </div>
+
+        <div class="panel details-panel">
+          <h3>Details</h3>
+          <div id="detailsArea" class="details-area">
+            <p class="muted tiny">No data yet</p>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <footer class="footer">
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
